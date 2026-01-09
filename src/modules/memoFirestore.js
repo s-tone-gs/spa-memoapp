@@ -25,8 +25,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-export const initializeMemos = await getMemos();
-
 export async function getMemos() {
   const memosRef = collection(db, COLLECTION_NAME);
   const memos = await getDocs(memosRef);

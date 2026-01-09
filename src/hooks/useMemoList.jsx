@@ -1,9 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as firestore from "../modules/memoFirestore.js";
 
 export function useMemoList() {
-  const [memos, setMemos] = useState(firestore.initializeMemos);
+  const [memos, setMemos] = useState([]);
   const [selectedId, setSelectedId] = useState(null);
+  useEffect(() => {
+    const loadMemo = async () => {
+      const memos = await firestore.getMemos();
+      setMemos(memos);
+    };
+    loadMemo();
+  }, []);
   function handleSelect(id) {
     setSelectedId(id);
   }
