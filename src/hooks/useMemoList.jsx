@@ -1,24 +1,8 @@
 import { useState } from "react";
-
-const initialMemos = [
-  {
-    id: 0,
-    content: "test\ntesttest",
-  },
-  {
-    id: 1,
-    content: "1111111\n2222",
-  },
-  {
-    id: 2,
-    content: "22222222\n3333",
-  },
-];
-
-let nextId = 3;
+import * as firestore from "../modules/memoFirestore.js";
 
 export function useMemoList() {
-  const [memos, setMemos] = useState(initialMemos);
+  const [memos, setMemos] = useState(firestore.initializeMemos);
   const [selectedId, setSelectedId] = useState(null);
   function handleSelect(id) {
     setSelectedId(id);
@@ -27,24 +11,26 @@ export function useMemoList() {
     setSelectedId(null);
   }
 
-  function handleAdd() {
+  async function handleAdd() {
+    const content = "新しいメモ";
+    const { newMemoId } = await firestore.addMemo(content);
     setMemos([
       ...memos,
       {
-        id: nextId,
-        content: "新しいメモ",
+        id: newMemoId,
+        content,
       },
     ]);
-    handleSelect(nextId);
-    nextId++;
+    handleSelect(newMemoId);
   }
 
-  function handleUpdate(text) {
+  async function handleUpdate(content) {
+    await firestore.updateMemo(selectedId, content);
     const newMemos = memos.map((memo) => {
       if (memo.id === selectedId) {
         return {
           ...memo,
-          content: text,
+          content,
         };
       } else {
         return memo;
@@ -54,7 +40,8 @@ export function useMemoList() {
     handleDeselect();
   }
 
-  function handleDestroy() {
+  async function handleDestroy() {
+    await firestore.destroyMemo(selectedId);
     const newMemos = memos.filter((memo) => memo.id !== selectedId);
     setMemos(newMemos);
     handleDeselect();
