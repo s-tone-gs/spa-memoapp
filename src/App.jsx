@@ -1,5 +1,5 @@
 import "./App.css";
-import { useMemoList } from "./hooks/useMemos.jsx";
+import { useMemoList } from "./hooks/useMemoList.jsx";
 import MemoMaster from "./memoComponents/MemoMaster.jsx";
 import MemoDetail from "./memoComponents/MemoDetail.jsx";
 
