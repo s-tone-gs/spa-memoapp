@@ -47,12 +47,12 @@ export function useMemoList() {
     handleDeselect();
   }
 
-  return [
+  return {
     memos,
     selectedId,
     handleSelect,
     handleAdd,
     handleUpdate,
     handleDestroy,
-  ];
+  };
 }

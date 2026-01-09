@@ -4,14 +4,14 @@ import MemoMaster from "./memoComponents/MemoMaster.jsx";
 import MemoDetail from "./memoComponents/MemoDetail.jsx";
 
 function App() {
-  const [
+  const {
     memos,
     selectedId,
     handleSelect,
     handleAdd,
     handleUpdate,
     handleDestroy,
-  ] = useMemoList();
+  } = useMemoList();
   return (
     <div
       style={{
