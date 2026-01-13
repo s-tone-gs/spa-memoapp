@@ -13,12 +13,7 @@ function App() {
     handleDestroy,
   } = useMemoList();
   return (
-    <div
-      style={{
-        display: "flex",
-        gap: "20px",
-      }}
-    >
+    <div className="app">
       <MemoMaster
         memos={memos}
         handleSelectMemo={handleSelect}

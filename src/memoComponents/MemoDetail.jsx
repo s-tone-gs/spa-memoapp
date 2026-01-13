@@ -23,11 +23,11 @@ export default function MemoDetail({
         onChange={handleChange}
       ></textarea>
       <div>
-        <button className="trigger-button" type="submit">
+        <button className="triggerButton" type="submit">
           更新
         </button>
         <button
-          className="trigger-button"
+          className="triggerButton"
           type="button"
           onClick={() => handleDeleteMemo(text)}
         >

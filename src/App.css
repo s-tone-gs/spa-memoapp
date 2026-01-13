@@ -1,8 +1,15 @@
 #root {
+  position: absolute;
+  top: 0;
+  left: 0;
   max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem;
   text-align: left;
+}
+
+.app {
+  display: flex;
+  gap: 50px;
 }
 
 .editForm {
@@ -13,8 +20,18 @@
 
 .contentArea {
   height: 200px;
+  border-color: blue;
+  border-radius: 10px;
+  border-width: 3px;
 }
 
-.button {
+.triggerButton {
   margin: 0 10px;
+  border: 2px solid;
+  padding: 0.3em 1.5em;
+}
+
+.addTrigger {
+  padding-left: 20px;
+  font-size: 20px;
 }

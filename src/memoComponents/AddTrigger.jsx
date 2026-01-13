@@ -1,6 +1,6 @@
 export default function AddTrigger({ handleAdd }) {
   return (
-    <div>
+    <div className="addTrigger">
       <a onClick={handleAdd}>+</a>
     </div>
   );
