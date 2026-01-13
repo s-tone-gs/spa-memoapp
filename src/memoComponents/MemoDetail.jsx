@@ -29,7 +29,7 @@ export default function MemoDetail({
         <button
           className="triggerButton"
           type="button"
-          onClick={() => handleDeleteMemo(text)}
+          onClick={handleDeleteMemo}
         >
           削除
         </button>
