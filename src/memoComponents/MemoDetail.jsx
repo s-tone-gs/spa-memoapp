@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Button from "./Button.jsx";
 
 export default function MemoDetail({
   content,
@@ -24,12 +23,16 @@ export default function MemoDetail({
         onChange={handleChange}
       ></textarea>
       <div>
-        <Button type="submit" label="更新" />
-        <Button
+        <button className="trigger-button" type="submit">
+          更新
+        </button>
+        <button
+          className="trigger-button"
           type="button"
-          label="削除"
           onClick={() => handleDeleteMemo(text)}
-        />
+        >
+          削除
+        </button>
       </div>
     </form>
   );
