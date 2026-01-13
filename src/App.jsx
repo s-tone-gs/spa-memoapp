@@ -16,14 +16,14 @@ function App() {
     <div className="app">
       <MemoMaster
         memos={memos}
-        handleSelectMemo={handleSelect}
-        handleAddMemo={handleAdd}
+        handleSelect={handleSelect}
+        handleAdd={handleAdd}
       />
       {selectedId !== null && (
         <MemoDetail
           {...memos.find((memo) => memo.id === selectedId)}
-          handleUpdateMemo={handleUpdate}
-          handleDeleteMemo={handleDestroy}
+          handleUpdate={handleUpdate}
+          handleDestroy={handleDestroy}
           key={selectedId}
         />
       )}

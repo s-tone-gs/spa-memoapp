@@ -1,10 +1,6 @@
 import { useState } from "react";
 
-export default function MemoDetail({
-  content,
-  handleUpdateMemo,
-  handleDeleteMemo,
-}) {
+export default function MemoDetail({ content, handleUpdate, handleDestroy }) {
   const [text, setText] = useState(content);
   function handleChange(e) {
     setText(e.target.value);
@@ -14,7 +10,7 @@ export default function MemoDetail({
       className="editForm"
       onSubmit={(e) => {
         e.preventDefault();
-        handleUpdateMemo(text);
+        handleUpdate(text);
       }}
     >
       <textarea
@@ -26,11 +22,7 @@ export default function MemoDetail({
         <button className="triggerButton" type="submit">
           更新
         </button>
-        <button
-          className="triggerButton"
-          type="button"
-          onClick={handleDeleteMemo}
-        >
+        <button className="triggerButton" type="button" onClick={handleDestroy}>
           削除
         </button>
       </div>

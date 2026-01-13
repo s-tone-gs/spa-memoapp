@@ -1,8 +1,8 @@
-function Memo({ id, content, handleSelectMemo }) {
+function Memo({ id, content, handleSelect }) {
   const firstLine = content.split("\n")[0];
   return (
     <>
-      <a onClick={() => handleSelectMemo(id)}>{firstLine}</a>
+      <a onClick={() => handleSelect(id)}>{firstLine}</a>
     </>
   );
 }
