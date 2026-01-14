@@ -2,7 +2,7 @@ import "./App.css";
 import { useMemoList } from "./hooks/useMemoList.jsx";
 import MemoMaster from "./components/memo/MemoMaster.jsx";
 import MemoDetail from "./components/memo/MemoDetail.jsx";
-import { LoginContext } from "./loginContext.jsx";
+import { LoginContext } from "./LoginContext.jsx";
 import Button from "./components/Button.jsx";
 import { useState } from "react";
 

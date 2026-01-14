@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useContext } from "react";
-import { LoginContext } from "../../loginContext.jsx";
+import { LoginContext } from "../../LoginContext.jsx";
 import Button from "../Button.jsx";
 
 export default function MemoDetail({ content, handleUpdate, handleDestroy }) {
