@@ -8,6 +8,7 @@
 }
 
 .app {
+  margin-top: 10px;
   display: flex;
   gap: 50px;
 }
@@ -23,6 +24,9 @@
 .memo:focus {
   outline: none;
   border: none;
+  
+.login {
+  margin-left: 250px;
 }
 
 .editForm {

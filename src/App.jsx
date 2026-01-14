@@ -23,30 +23,33 @@ function App() {
     handleDestroy,
   } = useMemoList();
 
-  const loginButtoon = login ? (
-    <Button label="ログアウト" onClick={handleLogout} />
-  ) : (
-    <Button label="ログイン" onClick={handleLogin} />
-  );
   return (
-    <div className="app">
-      {loginButtoon}
-      <LoginContext.Provider value={login}>
-        <MemoMaster
-          memos={memos}
-          handleSelect={setSelectedId}
-          handleAdd={handleAdd}
-        />
-        {selectedId !== null && (
-          <MemoDetail
-            {...memos.find((memo) => memo.id === selectedId)}
-            handleUpdate={handleUpdate}
-            handleDestroy={handleDestroy}
-            key={selectedId}
-          />
+    <>
+      <div className="login">
+        {login ? (
+          <Button label="ログアウト" onClick={handleLogout} />
+        ) : (
+          <Button label="ログイン" onClick={handleLogin} />
         )}
-      </LoginContext.Provider>
-    </div>
+      </div>
+      <div className="app">
+        <LoginContext.Provider value={login}>
+          <MemoMaster
+            memos={memos}
+            handleSelect={setSelectedId}
+            handleAdd={handleAdd}
+          />
+          {selectedId !== null && (
+            <MemoDetail
+              {...memos.find((memo) => memo.id === selectedId)}
+              handleUpdate={handleUpdate}
+              handleDestroy={handleDestroy}
+              key={selectedId}
+            />
+          )}
+        </LoginContext.Provider>
+      </div>
+    </>
   );
 }
 
