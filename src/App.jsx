@@ -2,8 +2,17 @@ import "./App.css";
 import { useMemoList } from "./hooks/useMemoList.jsx";
 import MemoMaster from "./components/memo/MemoMaster.jsx";
 import MemoDetail from "./components/memo/MemoDetail.jsx";
+import { LoginContext } from "./loginContext.jsx";
+import { useState } from "react";
 
 function App() {
+  const [login, setLogin] = useState(false);
+  function handleLogin() {
+    setLogin(true);
+  }
+  function handleLogout() {
+    setLogin(false);
+  }
   const {
     memos,
     selectedId,
@@ -12,21 +21,30 @@ function App() {
     handleUpdate,
     handleDestroy,
   } = useMemoList();
+
+  const loginButtoon = login ? (
+    <button onClick={handleLogout}>ログアウト</button>
+  ) : (
+    <button onClick={handleLogin}>ログイン</button>
+  );
   return (
     <div className="app">
-      <MemoMaster
-        memos={memos}
-        handleSelect={setSelectedId}
-        handleAdd={handleAdd}
-      />
-      {selectedId !== null && (
-        <MemoDetail
-          {...memos.find((memo) => memo.id === selectedId)}
-          handleUpdate={handleUpdate}
-          handleDestroy={handleDestroy}
-          key={selectedId}
+      {loginButtoon}
+      <LoginContext.Provider value={login}>
+        <MemoMaster
+          memos={memos}
+          handleSelect={setSelectedId}
+          handleAdd={handleAdd}
         />
-      )}
+        {selectedId !== null && (
+          <MemoDetail
+            {...memos.find((memo) => memo.id === selectedId)}
+            handleUpdate={handleUpdate}
+            handleDestroy={handleDestroy}
+            key={selectedId}
+          />
+        )}
+      </LoginContext.Provider>
     </div>
   );
 }
