@@ -3,6 +3,7 @@ import { useMemoList } from "./hooks/useMemoList.jsx";
 import MemoMaster from "./components/memo/MemoMaster.jsx";
 import MemoDetail from "./components/memo/MemoDetail.jsx";
 import { LoginContext } from "./loginContext.jsx";
+import Button from "./components/Button.jsx";
 import { useState } from "react";
 
 function App() {
@@ -23,9 +24,9 @@ function App() {
   } = useMemoList();
 
   const loginButtoon = login ? (
-    <button onClick={handleLogout}>ログアウト</button>
+    <Button label="ログアウト" onClick={handleLogout} />
   ) : (
-    <button onClick={handleLogin}>ログイン</button>
+    <Button label="ログイン" onClick={handleLogin} />
   );
   return (
     <div className="app">

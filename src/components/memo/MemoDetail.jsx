@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useContext } from "react";
 import { LoginContext } from "../../loginContext.jsx";
+import Button from "../Button.jsx";
 
 export default function MemoDetail({ content, handleUpdate, handleDestroy }) {
   const login = useContext(LoginContext);
@@ -23,16 +24,8 @@ export default function MemoDetail({ content, handleUpdate, handleDestroy }) {
       ></textarea>
       {login && (
         <div>
-          <button className="triggerButton" type="submit">
-            更新
-          </button>
-          <button
-            className="triggerButton"
-            type="button"
-            onClick={handleDestroy}
-          >
-            削除
-          </button>
+          <Button label="更新" type="submit" />
+          <Button label="削除" onClick={handleDestroy} />
         </div>
       )}
     </form>
