@@ -32,7 +32,7 @@ function App() {
           <Button label="ログイン" onClick={handleLogin} />
         )}
       </div>
-      <div className="app">
+      <div className="body">
         <LoginContext.Provider value={login}>
           <MemoMaster
             memos={memos}
