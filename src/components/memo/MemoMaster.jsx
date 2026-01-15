@@ -1,7 +1,7 @@
-import List from "./List.jsx";
-import AddMemoButton from "./AddMemoButton.jsx";
 import { useContext } from "react";
 import { LoginContext } from "../../LoginContext.jsx";
+import AddMemoButton from "./AddMemoButton.jsx";
+import List from "./List.jsx";
 
 export default function MemoMaster({ memos, handleSelect, handleAdd }) {
   const login = useContext(LoginContext);
