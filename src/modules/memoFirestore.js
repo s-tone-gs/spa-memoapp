@@ -9,8 +9,6 @@ import {
   updateDoc,
   deleteDoc,
 } from "firebase/firestore";
-
-const COLLECTION_NAME = "memos";
 const env = import.meta.env;
 
 const firebaseConfig = {
@@ -24,9 +22,10 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const collection_name = env.VITE_FIRESTORE_COLLECTION_NAME;
 
 export async function getMemos() {
-  const memosRef = collection(db, COLLECTION_NAME);
+  const memosRef = collection(db, collection_name);
   const memos = await getDocs(memosRef);
   return memos.docs.map((memo) => {
     return {
@@ -37,20 +36,20 @@ export async function getMemos() {
 }
 
 export async function addMemo(content) {
-  const memoRef = await addDoc(collection(db, COLLECTION_NAME), {
+  const memoRef = await addDoc(collection(db, collection_name), {
     content,
   });
   return { newMemoId: memoRef.id };
 }
 
 export async function updateMemo(id, content) {
-  const memoRef = doc(db, COLLECTION_NAME, id);
+  const memoRef = doc(db, collection_name, id);
   await updateDoc(memoRef, {
     content,
   });
 }
 
 export async function destroyMemo(id) {
-  const memoRef = doc(db, COLLECTION_NAME, id);
+  const memoRef = doc(db, collection_name, id);
   await deleteDoc(memoRef);
 }
