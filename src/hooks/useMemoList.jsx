@@ -16,8 +16,8 @@ export function useMemoList() {
   async function handleAdd() {
     const content = "新しいメモ";
     const { newMemoId } = await firestore.addMemo(content);
-    setMemos([
-      ...memos,
+    setMemos((prevMemos) => [
+      ...prevMemos,
       {
         id: newMemoId,
         content,
