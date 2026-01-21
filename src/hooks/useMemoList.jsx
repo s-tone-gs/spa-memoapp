@@ -13,14 +13,6 @@ export function useMemoList() {
     loadMemo();
   }, []);
 
-  function handleSelect(id) {
-    setSelectedId(id);
-  }
-
-  function handleDeselect() {
-    setSelectedId(null);
-  }
-
   async function handleAdd() {
     const content = "新しいメモ";
     const { newMemoId } = await firestore.addMemo(content);
@@ -31,7 +23,7 @@ export function useMemoList() {
         content,
       },
     ]);
-    handleSelect(newMemoId);
+    setSelectedId(newMemoId);
   }
 
   async function handleUpdate(content) {
@@ -47,20 +39,20 @@ export function useMemoList() {
       }
     });
     setMemos(newMemos);
-    handleDeselect();
+    setSelectedId(null);
   }
 
   async function handleDestroy() {
     await firestore.destroyMemo(selectedId);
     const newMemos = memos.filter((memo) => memo.id !== selectedId);
     setMemos(newMemos);
-    handleDeselect();
+    setSelectedId(null);
   }
 
   return {
     memos,
     selectedId,
-    handleSelect,
+    setSelectedId,
     handleAdd,
     handleUpdate,
     handleDestroy,

@@ -7,7 +7,7 @@ function App() {
   const {
     memos,
     selectedId,
-    handleSelect,
+    setSelectedId,
     handleAdd,
     handleUpdate,
     handleDestroy,
@@ -16,7 +16,7 @@ function App() {
     <div className="app">
       <MemoMaster
         memos={memos}
-        handleSelect={handleSelect}
+        handleSelect={setSelectedId}
         handleAdd={handleAdd}
       />
       {selectedId !== null && (
