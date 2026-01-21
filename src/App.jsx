@@ -1,7 +1,7 @@
 import "./App.css";
 import { useMemoList } from "./hooks/useMemoList.jsx";
-import MemoMaster from "./memoComponents/MemoMaster.jsx";
-import MemoDetail from "./memoComponents/MemoDetail.jsx";
+import MemoMaster from "./components/memo/MemoMaster.jsx";
+import MemoDetail from "./components/memo/MemoDetail.jsx";
 
 function App() {
   const {
