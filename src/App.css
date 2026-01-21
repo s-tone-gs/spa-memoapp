@@ -12,6 +12,19 @@
   gap: 50px;
 }
 
+.memo {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  height: 30px;
+  color: blue;
+}
+
+.memo:focus {
+  outline: none;
+  border: none;
+}
+
 .editForm {
   display: flex;
   flex-direction: column;
@@ -32,6 +45,15 @@
 }
 
 .addMemoButton {
+  outline: none;
+  border: none;
+  background-color: transparent;
   padding-left: 20px;
   font-size: 20px;
+  color: blue;
+}
+
+.addMemoButton:focus {
+  outline: none;
+  border: none;
 }
