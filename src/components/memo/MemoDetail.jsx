@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { useContext } from "react";
-import { LoginContext } from "../../LoginContext.jsx";
+import useAuth from "../../contexts/auth/useAuth.js";
 import Button from "../Button.jsx";
 
 export default function MemoDetail({ content, handleUpdate, handleDestroy }) {
-  const login = useContext(LoginContext);
+  const { isLoggedIn } = useAuth();
   const [text, setText] = useState(content);
   function handleChange(e) {
     setText(e.target.value);
@@ -22,7 +21,7 @@ export default function MemoDetail({ content, handleUpdate, handleDestroy }) {
         value={text}
         onChange={handleChange}
       ></textarea>
-      {login && (
+      {isLoggedIn && (
         <div>
           <Button label="更新" type="submit" />
           <Button label="削除" onClick={handleDestroy} />
