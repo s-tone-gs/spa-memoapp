@@ -1,7 +1,9 @@
 import { useContext } from "react";
 import { LoginContext } from ".";
 
-export default function useAuth() {
+function useAuth() {
   const isLoggedIn = useContext(LoginContext);
   return { isLoggedIn };
 }
+
+export default useAuth;

@@ -2,7 +2,7 @@ import { useState } from "react";
 import useAuth from "../../contexts/auth/useAuth.js";
 import Button from "../Button.jsx";
 
-export default function MemoDetail({ content, handleUpdate, handleDestroy }) {
+function MemoDetail({ content, handleUpdate, handleDestroy }) {
   const { isLoggedIn } = useAuth();
   const [text, setText] = useState(content);
   function handleChange(e) {
@@ -30,3 +30,5 @@ export default function MemoDetail({ content, handleUpdate, handleDestroy }) {
     </form>
   );
 }
+
+export default MemoDetail;

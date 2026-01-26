@@ -1,6 +1,6 @@
 import Button from "../../components/Button.jsx";
 
-export default function AuthButton({ loggedIn, handleLogin, handleLogout }) {
+function AuthButton({ loggedIn, handleLogin, handleLogout }) {
   return (
     <div className="login">
       {loggedIn ? (
@@ -11,3 +11,5 @@ export default function AuthButton({ loggedIn, handleLogin, handleLogout }) {
     </div>
   );
 }
+
+export default AuthButton;
