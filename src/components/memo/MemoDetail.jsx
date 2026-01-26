@@ -1,6 +1,9 @@
 import { useState } from "react";
+import useAuth from "../../contexts/auth/useAuth.js";
+import Button from "../Button.jsx";
 
-export default function MemoDetail({ content, handleUpdate, handleDestroy }) {
+function MemoDetail({ content, handleUpdate, handleDestroy }) {
+  const { isLoggedIn } = useAuth();
   const [text, setText] = useState(content);
   function handleChange(e) {
     setText(e.target.value);
@@ -18,14 +21,14 @@ export default function MemoDetail({ content, handleUpdate, handleDestroy }) {
         value={text}
         onChange={handleChange}
       ></textarea>
-      <div>
-        <button className="triggerButton" type="submit">
-          更新
-        </button>
-        <button className="triggerButton" type="button" onClick={handleDestroy}>
-          削除
-        </button>
-      </div>
+      {isLoggedIn && (
+        <div>
+          <Button label="更新" type="submit" />
+          <Button label="削除" onClick={handleDestroy} />
+        </div>
+      )}
     </form>
   );
 }
+
+export default MemoDetail;
